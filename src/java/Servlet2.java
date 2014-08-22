@@ -4,21 +4,20 @@
  * and open the template in the editor.
  */
 
-import com.sun.corba.se.spi.presentation.rmi.StubAdapter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.PageContext;
 
 /**
  *
- * @author ESTACION 10
+ * @author ESTACION 5
  */
-public class Servlet1 extends HttpServlet {
+@WebServlet(urlPatterns = {"/Servlet2"})
+public class Servlet2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,33 +28,21 @@ public class Servlet1 extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           
-            
-            String nombre= request.getParameter("nombre");
-             Integer edad = Integer.parseInt (request.getParameter("edad"));
-              HttpSession sesion = request.getSession(true);
-             if ( edad > 30){
-                 sesion.setAttribute(nombre,edad);
-            response.sendRedirect("page1.jsp");
-            out.println(
-                    'Nombre es:' +nombre);
-                    
-            }
-            else {
-                sesion.setAttribute ("key",nombre+"456");
-                response.sendRedirect("page2.jsp");
-            }
-            
-            
-            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Servlet2</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Servlet2 at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         } finally {
             out.close();
         }
@@ -99,7 +86,5 @@ public class Servlet1 extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    
 
 }
